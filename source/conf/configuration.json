@@ -1,0 +1,14 @@
+{
+  "layouts": [
+    "small_workspace"
+  ],
+  "keymap": {
+    "master": "RETURN+COMMAND+SHIFT",
+    "remove_all_windows": "Q+COMMAND+SHIFT",
+    "rotate_layout_counterclockwise": "K+COMMAND+SHIFT",
+    "rotate_layout_clockwise": "J+COMMAND+SHIFT",
+    "activate_previous_window": "H+COMMAND+SHIFT",
+    "activate_next_window": "L+COMMAND+SHIFT"
+  }
+}
+

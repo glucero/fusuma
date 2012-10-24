@@ -1,0 +1,17 @@
+PATH
+  remote: .
+  specs:
+    hotkeys (0.1.0)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    rake (0.9.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (~> 1.0.0)
+  hotkeys!
+  rake

@@ -1,0 +1,22 @@
+$:.unshift File.join(File.dirname($0), '/../lib')
+
+framework 'ScriptingBridge'
+framework 'Carbon'
+framework 'Cocoa'
+
+require 'vendor/hotkeys-0.1.2/lib/hotkeys'
+
+require 'json'
+require 'ostruct'
+require 'logger'
+
+require 'version'
+require 'fusuma'
+
+begin
+  Fusuma::Fusuma.new
+rescue => error
+  puts error.message
+  puts error.backtrace.join("\n")
+end
+

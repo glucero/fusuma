@@ -1,0 +1,259 @@
+<?xml version='1.0'?>
+<!DOCTYPE signatures SYSTEM "file://localhost/System/Library/DTDs/BridgeSupport.dtd">
+<signatures version='0.9'>
+<depends_on path='/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/CommonPanels.framework'/>
+<depends_on path='/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/Help.framework'/>
+<depends_on path='/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/HIToolbox.framework'/>
+<depends_on path='/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/ImageCapture.framework'/>
+<depends_on path='/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/Ink.framework'/>
+<depends_on path='/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/OpenScripting.framework'/>
+<depends_on path='/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/Print.framework'/>
+<depends_on path='/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/SecurityHI.framework'/>
+<depends_on path='/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/SpeechRecognition.framework'/>
+<depends_on path='/System/Library/Frameworks/ApplicationServices.framework'/>
+<enum name='activMask' value='256'/>
+<enum name='activateEvt' value='8'/>
+<enum name='activeFlag' value='1'/>
+<enum name='activeFlagBit' value='0'/>
+<enum name='adbAddrMask' value='16711680'/>
+<enum name='alphaLock' value='1024'/>
+<enum name='alphaLockBit' value='10'/>
+<enum name='app1Evt' value='12'/>
+<enum name='app1Mask' value='4096'/>
+<enum name='app2Evt' value='13'/>
+<enum name='app2Mask' value='8192'/>
+<enum name='app3Evt' value='14'/>
+<enum name='app3Mask' value='16384'/>
+<enum name='app4Evt' value='15'/>
+<enum name='app4Mask' value='32768'/>
+<enum name='autoKey' value='5'/>
+<enum name='autoKeyMask' value='32'/>
+<enum name='btnState' value='128'/>
+<enum name='btnStateBit' value='7'/>
+<enum name='charCodeMask' value='255'/>
+<enum name='cmdKey' value='256'/>
+<enum name='cmdKeyBit' value='8'/>
+<enum name='controlKey' value='4096'/>
+<enum name='controlKeyBit' value='12'/>
+<enum name='diskEvt' value='7'/>
+<enum name='diskMask' value='128'/>
+<enum name='driverEvt' value='11'/>
+<enum name='driverMask' value='2048'/>
+<enum name='everyEvent' value='65535'/>
+<enum name='highLevelEventMask' value='1024'/>
+<enum name='kAppleLogoCharCode' value='20'/>
+<enum name='kAppleLogoUnicode' value='63743'/>
+<enum name='kBackspaceCharCode' value='8'/>
+<enum name='kBellCharCode' value='7'/>
+<enum name='kBulletCharCode' value='165'/>
+<enum name='kBulletUnicode' value='8226'/>
+<enum name='kCheckCharCode' value='18'/>
+<enum name='kCheckUnicode' value='10003'/>
+<enum name='kClearCharCode' value='27'/>
+<enum name='kCommandCharCode' value='17'/>
+<enum name='kCommandUnicode' value='8984'/>
+<enum name='kControlUnicode' value='8963'/>
+<enum name='kDeleteCharCode' value='127'/>
+<enum name='kDiamondCharCode' value='19'/>
+<enum name='kDiamondUnicode' value='9670'/>
+<enum name='kDownArrowCharCode' value='31'/>
+<enum name='kEndCharCode' value='4'/>
+<enum name='kEnterCharCode' value='3'/>
+<enum name='kEscapeCharCode' value='27'/>
+<enum name='kFormFeedCharCode' value='12'/>
+<enum name='kFunctionKeyCharCode' value='16'/>
+<enum name='kHelpCharCode' value='5'/>
+<enum name='kHighLevelEvent' value='23'/>
+<enum name='kHomeCharCode' value='1'/>
+<enum name='kLeftArrowCharCode' value='28'/>
+<enum name='kLineFeedCharCode' value='10'/>
+<enum name='kNonBreakingSpaceCharCode' value='202'/>
+<enum name='kNullCharCode' value='0'/>
+<enum name='kOptionUnicode' value='8997'/>
+<enum name='kPageDownCharCode' value='12'/>
+<enum name='kPageUpCharCode' value='11'/>
+<enum name='kPencilLeftUnicode' value='63490'/>
+<enum name='kPencilUnicode' value='9998'/>
+<enum name='kReturnCharCode' value='13'/>
+<enum name='kRightArrowCharCode' value='29'/>
+<enum name='kShiftUnicode' value='8679'/>
+<enum name='kSpaceCharCode' value='32'/>
+<enum name='kTabCharCode' value='9'/>
+<enum name='kUpArrowCharCode' value='30'/>
+<enum name='kVK_ANSI_0' value='29'/>
+<enum name='kVK_ANSI_1' value='18'/>
+<enum name='kVK_ANSI_2' value='19'/>
+<enum name='kVK_ANSI_3' value='20'/>
+<enum name='kVK_ANSI_4' value='21'/>
+<enum name='kVK_ANSI_5' value='23'/>
+<enum name='kVK_ANSI_6' value='22'/>
+<enum name='kVK_ANSI_7' value='26'/>
+<enum name='kVK_ANSI_8' value='28'/>
+<enum name='kVK_ANSI_9' value='25'/>
+<enum name='kVK_ANSI_A' value='0'/>
+<enum name='kVK_ANSI_B' value='11'/>
+<enum name='kVK_ANSI_Backslash' value='42'/>
+<enum name='kVK_ANSI_C' value='8'/>
+<enum name='kVK_ANSI_Comma' value='43'/>
+<enum name='kVK_ANSI_D' value='2'/>
+<enum name='kVK_ANSI_E' value='14'/>
+<enum name='kVK_ANSI_Equal' value='24'/>
+<enum name='kVK_ANSI_F' value='3'/>
+<enum name='kVK_ANSI_G' value='5'/>
+<enum name='kVK_ANSI_Grave' value='50'/>
+<enum name='kVK_ANSI_H' value='4'/>
+<enum name='kVK_ANSI_I' value='34'/>
+<enum name='kVK_ANSI_J' value='38'/>
+<enum name='kVK_ANSI_K' value='40'/>
+<enum name='kVK_ANSI_Keypad0' value='82'/>
+<enum name='kVK_ANSI_Keypad1' value='83'/>
+<enum name='kVK_ANSI_Keypad2' value='84'/>
+<enum name='kVK_ANSI_Keypad3' value='85'/>
+<enum name='kVK_ANSI_Keypad4' value='86'/>
+<enum name='kVK_ANSI_Keypad5' value='87'/>
+<enum name='kVK_ANSI_Keypad6' value='88'/>
+<enum name='kVK_ANSI_Keypad7' value='89'/>
+<enum name='kVK_ANSI_Keypad8' value='91'/>
+<enum name='kVK_ANSI_Keypad9' value='92'/>
+<enum name='kVK_ANSI_KeypadClear' value='71'/>
+<enum name='kVK_ANSI_KeypadDecimal' value='65'/>
+<enum name='kVK_ANSI_KeypadDivide' value='75'/>
+<enum name='kVK_ANSI_KeypadEnter' value='76'/>
+<enum name='kVK_ANSI_KeypadEquals' value='81'/>
+<enum name='kVK_ANSI_KeypadMinus' value='78'/>
+<enum name='kVK_ANSI_KeypadMultiply' value='67'/>
+<enum name='kVK_ANSI_KeypadPlus' value='69'/>
+<enum name='kVK_ANSI_L' value='37'/>
+<enum name='kVK_ANSI_LeftBracket' value='33'/>
+<enum name='kVK_ANSI_M' value='46'/>
+<enum name='kVK_ANSI_Minus' value='27'/>
+<enum name='kVK_ANSI_N' value='45'/>
+<enum name='kVK_ANSI_O' value='31'/>
+<enum name='kVK_ANSI_P' value='35'/>
+<enum name='kVK_ANSI_Period' value='47'/>
+<enum name='kVK_ANSI_Q' value='12'/>
+<enum name='kVK_ANSI_Quote' value='39'/>
+<enum name='kVK_ANSI_R' value='15'/>
+<enum name='kVK_ANSI_RightBracket' value='30'/>
+<enum name='kVK_ANSI_S' value='1'/>
+<enum name='kVK_ANSI_Semicolon' value='41'/>
+<enum name='kVK_ANSI_Slash' value='44'/>
+<enum name='kVK_ANSI_T' value='17'/>
+<enum name='kVK_ANSI_U' value='32'/>
+<enum name='kVK_ANSI_V' value='9'/>
+<enum name='kVK_ANSI_W' value='13'/>
+<enum name='kVK_ANSI_X' value='7'/>
+<enum name='kVK_ANSI_Y' value='16'/>
+<enum name='kVK_ANSI_Z' value='6'/>
+<enum name='kVK_CapsLock' value='57'/>
+<enum name='kVK_Command' value='55'/>
+<enum name='kVK_Control' value='59'/>
+<enum name='kVK_Delete' value='51'/>
+<enum name='kVK_DownArrow' value='125'/>
+<enum name='kVK_End' value='119'/>
+<enum name='kVK_Escape' value='53'/>
+<enum name='kVK_F1' value='122'/>
+<enum name='kVK_F10' value='109'/>
+<enum name='kVK_F11' value='103'/>
+<enum name='kVK_F12' value='111'/>
+<enum name='kVK_F13' value='105'/>
+<enum name='kVK_F14' value='107'/>
+<enum name='kVK_F15' value='113'/>
+<enum name='kVK_F16' value='106'/>
+<enum name='kVK_F17' value='64'/>
+<enum name='kVK_F18' value='79'/>
+<enum name='kVK_F19' value='80'/>
+<enum name='kVK_F2' value='120'/>
+<enum name='kVK_F20' value='90'/>
+<enum name='kVK_F3' value='99'/>
+<enum name='kVK_F4' value='118'/>
+<enum name='kVK_F5' value='96'/>
+<enum name='kVK_F6' value='97'/>
+<enum name='kVK_F7' value='98'/>
+<enum name='kVK_F8' value='100'/>
+<enum name='kVK_F9' value='101'/>
+<enum name='kVK_ForwardDelete' value='117'/>
+<enum name='kVK_Function' value='63'/>
+<enum name='kVK_Help' value='114'/>
+<enum name='kVK_Home' value='115'/>
+<enum name='kVK_ISO_Section' value='10'/>
+<enum name='kVK_JIS_Eisu' value='102'/>
+<enum name='kVK_JIS_Kana' value='104'/>
+<enum name='kVK_JIS_KeypadComma' value='95'/>
+<enum name='kVK_JIS_Underscore' value='94'/>
+<enum name='kVK_JIS_Yen' value='93'/>
+<enum name='kVK_LeftArrow' value='123'/>
+<enum name='kVK_Mute' value='74'/>
+<enum name='kVK_Option' value='58'/>
+<enum name='kVK_PageDown' value='121'/>
+<enum name='kVK_PageUp' value='116'/>
+<enum name='kVK_Return' value='36'/>
+<enum name='kVK_RightArrow' value='124'/>
+<enum name='kVK_RightControl' value='62'/>
+<enum name='kVK_RightOption' value='61'/>
+<enum name='kVK_RightShift' value='60'/>
+<enum name='kVK_Shift' value='56'/>
+<enum name='kVK_Space' value='49'/>
+<enum name='kVK_Tab' value='48'/>
+<enum name='kVK_UpArrow' value='126'/>
+<enum name='kVK_VolumeDown' value='73'/>
+<enum name='kVK_VolumeUp' value='72'/>
+<enum name='kVerticalTabCharCode' value='11'/>
+<enum name='keyCodeMask' value='65280'/>
+<enum name='keyDown' value='3'/>
+<enum name='keyDownMask' value='8'/>
+<enum name='keyUp' value='4'/>
+<enum name='keyUpMask' value='16'/>
+<enum name='mDownMask' value='2'/>
+<enum name='mUpMask' value='4'/>
+<enum name='mouseDown' value='1'/>
+<enum name='mouseMovedMessage' value='250'/>
+<enum name='mouseUp' value='2'/>
+<enum name='networkEvt' value='10'/>
+<enum name='networkMask' value='1024'/>
+<enum name='nullEvent' value='0'/>
+<enum name='optionKey' value='2048'/>
+<enum name='optionKeyBit' value='11'/>
+<enum name='osEvt' value='15'/>
+<enum name='osEvtMessageMask' value='-16777216'/>
+<enum name='osMask' value='32768'/>
+<enum name='resumeFlag' value='1'/>
+<enum name='rightControlKey' value='32768'/>
+<enum name='rightControlKeyBit' value='15'/>
+<enum name='rightOptionKey' value='16384'/>
+<enum name='rightOptionKeyBit' value='14'/>
+<enum name='rightShiftKey' value='8192'/>
+<enum name='rightShiftKeyBit' value='13'/>
+<enum name='shiftKey' value='512'/>
+<enum name='shiftKeyBit' value='9'/>
+<enum name='suspendResumeMessage' value='1'/>
+<enum name='updateEvt' value='6'/>
+<enum name='updateMask' value='64'/>
+<function name='Button'>
+<retval type='B'/>
+</function>
+<function name='FlushEvents'>
+<arg type='S'/>
+<arg type='S'/>
+</function>
+<function name='GetKeys'>
+<arg type='[4{BigEndianUInt32=I}]'/>
+</function>
+<function name='IsCmdChar'>
+<arg type='^{EventRecord=SLI{Point=ss}S}'/>
+<arg type='s'/>
+<retval type='B'/>
+</function>
+<function name='LMGetKbdLast'>
+<retval type='C'/>
+</function>
+<function name='LMGetKbdType'>
+<retval type='C'/>
+</function>
+<function name='LMGetKeyRepThresh'>
+<retval type='s'/>
+</function>
+<function name='LMGetKeyThresh'>
+<retval type='s'/>
+</function>
+</signatures>

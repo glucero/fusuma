@@ -1,0 +1,57 @@
+{
+  "name": "small_workspace",
+  "scale": {
+    "origin": [ 0, 0 ],
+    "size": [ 120, 120 ]
+  },
+  "frames": [
+    [
+      {
+        "position": [ 0, 0 ],
+        "dimensions": [ 120, 120 ]
+      }
+    ],
+    [
+      {
+        "position": [ 60, 0 ],
+        "dimensions": [ 60, 120 ]
+      },
+      {
+        "position": [ 0, 0 ],
+        "dimensions": [ 60, 120 ]
+      }
+    ],
+    [
+      {
+        "position": [ 60, 0 ],
+        "dimensions": [ 60, 120 ]
+      },
+      {
+        "position": [ 0, 60 ],
+        "dimensions": [ 60, 60 ]
+      },
+      {
+        "position": [ 0, 0 ],
+        "dimensions": [ 60, 60 ]
+      }
+    ],
+    [
+      {
+        "position": [ 60, 0 ],
+        "dimensions": [ 60, 120 ]
+      },
+      {
+        "position": [ 0, 80 ],
+        "dimensions": [ 60, 40 ]
+      },
+      {
+        "position": [ 0, 40 ],
+        "dimensions": [ 60, 40 ]
+      },
+      {
+        "position": [ 0, 0 ],
+        "dimensions": [ 60, 40 ]
+      }
+    ]
+  ]
+}

@@ -1,0 +1,134 @@
+#!/usr/bin/env ruby
+
+module Fusuma
+
+  require 'time'
+  require 'fileutils'
+
+  APP_NAME = 'fusuma'
+  VERSION  = '1.0.0'
+
+  class Build
+
+    BUILD_TIME = Time.now.iso8601
+
+    ############################################################################
+    # the project and build heirarchy
+    PROJECT_ROOT                        = File.dirname(__FILE__)
+      PROJECT_LICENSE                   = File.join(PROJECT_ROOT, 'LICENSE.txt')
+      BUILD_ROOT                        = File.join(PROJECT_ROOT, 'build')
+        BUILD_DIR                       = File.join(BUILD_ROOT, BUILD_TIME)
+          OSX_APP_DIR                   = File.join(BUILD_DIR, "#{APP_NAME}.app")
+            CONTENTS_DIR                = File.join(OSX_APP_DIR, 'Contents')
+              BUILD_STAMP_FILE          = File.join(CONTENTS_DIR, 'build')
+              FRAMEWORKS_DIR            = File.join(CONTENTS_DIR, 'Frameworks')
+                # MACRUBY_DIR             = File.join(FRAMEWORKS_DIR, 'MacRuby.framework') # TODO: embed MacRuby
+              INFO_PLIST_FILE           = File.join(CONTENTS_DIR, 'Info.plist')
+              MACOS_DIR                 = File.join(CONTENTS_DIR, 'MacOS')
+                EXECUTABLE_FILE         = File.join(MACOS_DIR, "#{APP_NAME}")
+              PROFILE_DIR               = File.join(CONTENTS_DIR, 'Profile')
+              RESOURCES_DIR             = File.join(CONTENTS_DIR, 'Resources')
+                LICENSE_FILE            = File.join(PROJECT_ROOT, 'LICENSE.txt')
+                APP_BIN_DIR             = File.join(RESOURCES_DIR, 'bin')
+                APP_CONF_DIR            = File.join(RESOURCES_DIR, 'conf')
+                # ICON_FILE               = File.join(RESOURCES_DIR, 'fusuma.icns') # TODO: make icon
+                APP_LIB_DIR             = File.join(RESOURCES_DIR, 'lib')
+                  VERSION_FILE          = File.join(APP_LIB_DIR, 'version.rb')
+                APP_LOG_DIR             = File.join(RESOURCES_DIR, 'log')
+                APP_VENDOR_DIR          = File.join(RESOURCES_DIR, 'vendor')
+              VERSION_PLIST_FILE        = File.join(CONTENTS_DIR, 'version.plist')
+            # ICON_CHECK_FILE             = File.join(OSX_APP_DIR, 'Icon?')
+      PROJECT_SOURCE_DIR                = File.join(PROJECT_ROOT, 'source')
+        SOURCE_BIN_DIR                  = File.join(PROJECT_SOURCE_DIR, 'bin')
+        SOURCE_CONF_DIR                 = File.join(PROJECT_SOURCE_DIR, 'conf')
+        SOURCE_LIB_DIR                  = File.join(PROJECT_SOURCE_DIR, 'lib')
+        SOURCE_VENDOR_DIR               = File.join(PROJECT_SOURCE_DIR, 'vendor')
+    ############################################################################
+    # files created during build time
+    BUILD_STAMP_CONTENTS = BUILD_TIME
+    LICENSE_CONTENTS = File.open(PROJECT_LICENSE).read
+    INFO_PLIST_CONTENTS = <<-TEXT
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>CFBundleExecutable</key>
+    <string>#{APP_NAME}</string>
+    <key>NSPrincipalClass</key>
+    <string>NSApplication</string>
+    <key>LSUIElement</key>
+    <true/>
+  </dict>
+</plist>
+    TEXT
+    EXECUTABLE_CONTENTS = <<-TEXT
+#!/bin/sh
+cd "`dirname $0`/../Resources"
+/usr/local/bin/macruby bin/#{APP_NAME}
+    TEXT
+    VERSION_PLIST_CONTENTS = <<-TEXT
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>CFBundleShortVersionString</key>
+    <string>#{VERSION}</string>
+    <key>CFBundleVersion</key>
+    <string>#{VERSION}</string>
+    <key>ProjectName</key>
+    <string>#{APP_NAME}</string>
+  </dict>
+</plist>
+    TEXT
+    VERSION_CONTENTS = <<-TEXT
+module Fusuma
+  VERSION = "#{VERSION}"
+end
+    TEXT
+    ############################################################################
+
+    def build_application
+      create_directories
+      copy_source
+
+      create_files
+    end
+
+    def create_directories
+      [FRAMEWORKS_DIR, MACOS_DIR, PROFILE_DIR, APP_LOG_DIR].each do |directory|
+        FileUtils.makedirs directory
+      end
+    end
+
+    def create_files
+      %w(BUILD_STAMP INFO_PLIST EXECUTABLE LICENSE VERSION_PLIST VERSION).each do |file|
+        values = %w(FILE CONTENTS).each
+        write_file { Build.const_get "#{file}_#{values.next}" }
+      end
+
+      File.chmod 0766, EXECUTABLE_FILE
+    end
+
+    def write_file
+      File.open(yield, 'w') { |f| f.write yield }
+    end
+
+    def copy_source
+      %w(BIN CONF LIB VENDOR).each do |dir|
+        values = %w(SOURCE APP).each
+        copy_dir { Build.const_get "#{values.next}_#{dir}_DIR" }
+      end
+    end
+
+    def copy_dir
+      FileUtils.copy_entry(yield, yield)
+    end
+
+    def initialize
+      build_application
+    end
+  end
+end
+
+Fusuma::Build.new
+
