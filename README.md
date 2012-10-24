@@ -22,9 +22,25 @@ fusuma has been written in MacRuby, [and who doesn't like Ruby](http://www.youtu
 
 ### how does it work?
 
-fusuma defines a layout for each active display:
+example configuration 'configuration.json':
 
-    (example my_layout.json)
+    {
+      "layouts": [                               # layouts are matched to active displays
+        "small_workspace",                       # primary monitor
+        "large_workspace"                        # secondary monitor
+      ],
+      "keymap": {                                # keymap actions reference methods in keymap.rb
+        "master": "RETURN+COMMAND+SHIFT",
+        "remove_all_windows": "Q+COMMAND+SHIFT",
+        "rotate_layout_counterclockwise": "K+COMMAND+SHIFT",   # *** WARNING ***
+        "rotate_layout_clockwise": "J+COMMAND+SHIFT",          # these keymaps are global, map carefully.
+        "activate_previous_window": "H+COMMAND+SHIFT",         # *** WARNING ***
+        "activate_next_window": "L+COMMAND+SHIFT",
+        "zoom_active_window": "Z+COMMAND+SHIFT"
+      }
+    }
+
+example layout 'my_layout.json'
 
     {
       "name": "my_layout",                       # each layout defines its own scale so
@@ -51,27 +67,6 @@ fusuma defines a layout for each active display:
         ]
       ]
     }
-
-
-each layout defines a 'frame' for each window layout configuration:
-
-    (example configuration.json)
-
-    {
-      "layouts": [                               # layouts are matched to active displays
-        "small_workspace",                       # primary monitor
-        "large_workspace"                        # secondary monitor
-      ],
-      "keymap": {                                # keymap actions reference methods in keymap.rb
-        "master": "RETURN+COMMAND+SHIFT",
-        "remove_all_windows": "Q+COMMAND+SHIFT",
-        "rotate_layout_counterclockwise": "K+COMMAND+SHIFT",   # *** WARNING ***
-        "rotate_layout_clockwise": "J+COMMAND+SHIFT",          # these keymaps are global, map carefully.
-        "activate_previous_window": "H+COMMAND+SHIFT",         # *** WARNING ***
-        "activate_next_window": "L+COMMAND+SHIFT"
-      }
-    }
-
 
 ***
 
