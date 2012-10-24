@@ -3,7 +3,7 @@
     "small_workspace"
   ],
   "keymap": {
-    "master": "RETURN+COMMAND+SHIFT",
+    "main_window": "RETURN+COMMAND+SHIFT",
     "remove_all_windows": "Q+COMMAND+SHIFT",
     "rotate_layout_counterclockwise": "K+COMMAND+SHIFT",
     "rotate_layout_clockwise": "J+COMMAND+SHIFT",
