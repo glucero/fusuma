@@ -44,9 +44,11 @@ module Fusuma
         SOURCE_LIB_DIR                  = File.join(PROJECT_SOURCE_DIR, 'lib')
         SOURCE_VENDOR_DIR               = File.join(PROJECT_SOURCE_DIR, 'vendor')
     ############################################################################
-    # files created during build time
+
     BUILD_STAMP_CONTENTS = BUILD_TIME
+
     LICENSE_CONTENTS = File.open(PROJECT_LICENSE).read
+
     INFO_PLIST_CONTENTS = <<-TEXT
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -61,11 +63,13 @@ module Fusuma
   </dict>
 </plist>
     TEXT
+
     EXECUTABLE_CONTENTS = <<-TEXT
 #!/bin/sh
 cd "`dirname $0`/../Resources"
 /usr/local/bin/macruby bin/#{APP_NAME}
     TEXT
+
     VERSION_PLIST_CONTENTS = <<-TEXT
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -80,19 +84,12 @@ cd "`dirname $0`/../Resources"
   </dict>
 </plist>
     TEXT
+
     VERSION_CONTENTS = <<-TEXT
 module Fusuma
   VERSION = "#{VERSION}"
 end
     TEXT
-    ############################################################################
-
-    def build_application
-      create_directories
-      copy_source
-
-      create_files
-    end
 
     def create_directories
       [FRAMEWORKS_DIR, MACOS_DIR, PROFILE_DIR, APP_LOG_DIR].each do |directory|
@@ -106,7 +103,7 @@ end
         write_file { Build.const_get "#{file}_#{values.next}" }
       end
 
-      File.chmod 0766, EXECUTABLE_FILE
+      File.chmod(0766, EXECUTABLE_FILE)
     end
 
     def write_file
@@ -114,9 +111,9 @@ end
     end
 
     def copy_source
-      %w(BIN CONF LIB VENDOR).each do |dir|
+      %w(BIN CONF LIB VENDOR).each do |directory|
         values = %w(SOURCE APP).each
-        copy_dir { Build.const_get "#{values.next}_#{dir}_DIR" }
+        copy_dir { Build.const_get "#{values.next}_#{directory}_DIR" }
       end
     end
 
@@ -125,7 +122,10 @@ end
     end
 
     def initialize
-      build_application
+      create_directories
+      copy_source
+
+      create_files
     end
   end
 end
