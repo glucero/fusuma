@@ -20,6 +20,61 @@ fusuma has been written in MacRuby, [and who doesn't like Ruby](http://www.youtu
 
 ***
 
+### how does it work?
+
+fusuma defines a layout for each active display:
+
+    (example my_layout.json)
+
+    {
+      "name": "my_layout",                       # each layout defines its own scale so
+      "scale": {                                 # we can use the same layout with many
+        "origin": [ 0, 0 ],                      # different display dimensions.
+        "size": [ 120, 120 ]
+      },                                         # each layout's frame defines the layout
+      "frames": [                                # for each window (and maximum number of
+        [                                        # windows that can be controlled).
+          {
+            "position": [ 0, 0 ],                # if there is 1 window in the layout,
+            "dimensions": [ 120, 120 ]           # frame 1 will maximize the window.
+          }
+        ],
+        [
+          {
+            "position": [ 60, 0 ],
+            "dimensions": [ 60, 120 ]            # if there are two windows in the layout,
+          },                                     # frame 2 will split the desktop down the
+          {                                      # middle with the 'main' window on the
+            "position": [ 0, 0 ],                # and the secondary window on the left
+            "dimensions": [ 60, 120 ]
+          }
+        ]
+      ]
+    }
+
+
+each layout defines a 'frame' for each window layout configuration:
+
+    (example configuration.json)
+
+    {
+      "layouts": [                               # layouts are matched to active displays
+        "small_workspace",                       # primary monitor
+        "large_workspace"                        # secondary monitor
+      ],
+      "keymap": {                                # keymap actions reference methods in keymap.rb
+        "master": "RETURN+COMMAND+SHIFT",
+        "remove_all_windows": "Q+COMMAND+SHIFT",
+        "rotate_layout_counterclockwise": "K+COMMAND+SHIFT",   # *** WARNING ***
+        "rotate_layout_clockwise": "J+COMMAND+SHIFT",          # these keymaps are global, map carefully.
+        "activate_previous_window": "H+COMMAND+SHIFT",         # *** WARNING ***
+        "activate_next_window": "L+COMMAND+SHIFT"
+      }
+    }
+
+
+***
+
 ### todo
 
   * clean up and documentation (this is an ongoing todo item)
@@ -42,8 +97,6 @@ fusuma has been written in MacRuby, [and who doesn't like Ruby](http://www.youtu
 ***
 
 ### license
-
-    MIT License
 
     Copyright (C) 2012 Gino Lucero
 

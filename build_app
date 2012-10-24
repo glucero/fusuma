@@ -6,7 +6,7 @@ module Fusuma
   require 'fileutils'
 
   APP_NAME = 'fusuma'
-  VERSION  = '1.0.0'
+  VERSION  = '0.1.0'
 
   class Build
 
@@ -25,13 +25,13 @@ module Fusuma
                 # MACRUBY_DIR             = File.join(FRAMEWORKS_DIR, 'MacRuby.framework') # TODO: embed MacRuby
               INFO_PLIST_FILE           = File.join(CONTENTS_DIR, 'Info.plist')
               MACOS_DIR                 = File.join(CONTENTS_DIR, 'MacOS')
-                EXECUTABLE_FILE         = File.join(MACOS_DIR, "#{APP_NAME}")
+                EXECUTABLE_FILE         = File.join(MACOS_DIR, APP_NAME)
               PROFILE_DIR               = File.join(CONTENTS_DIR, 'Profile')
               RESOURCES_DIR             = File.join(CONTENTS_DIR, 'Resources')
                 LICENSE_FILE            = File.join(PROJECT_ROOT, 'LICENSE.txt')
                 APP_BIN_DIR             = File.join(RESOURCES_DIR, 'bin')
                 APP_CONF_DIR            = File.join(RESOURCES_DIR, 'conf')
-                # ICON_FILE               = File.join(RESOURCES_DIR, 'fusuma.icns') # TODO: make icon
+                # ICON_FILE               = File.join(RESOURCES_DIR, "#{APP_NAME}.icns") # TODO: make icon
                 APP_LIB_DIR             = File.join(RESOURCES_DIR, 'lib')
                   VERSION_FILE          = File.join(APP_LIB_DIR, 'version.rb')
                 APP_LOG_DIR             = File.join(RESOURCES_DIR, 'log')
@@ -86,32 +86,26 @@ cd "`dirname $0`/../Resources"
     TEXT
 
     VERSION_CONTENTS = <<-TEXT
-module Fusuma
+module #{APP_NAME.capitalize}
   VERSION = "#{VERSION}"
 end
     TEXT
 
     def create_directories
-      [FRAMEWORKS_DIR, MACOS_DIR, PROFILE_DIR, APP_LOG_DIR].each do |directory|
+      # FileUtils.makedirs will create all parent directories needed
+      directories = [FRAMEWORKS_DIR, MACOS_DIR, PROFILE_DIR, APP_LOG_DIR]
+
+      directories.each do |directory|
         FileUtils.makedirs directory
       end
     end
 
-    def create_files
-      %w(BUILD_STAMP INFO_PLIST EXECUTABLE LICENSE VERSION_PLIST VERSION).each do |file|
-        values = %w(FILE CONTENTS).each
-        write_file { Build.const_get "#{file}_#{values.next}" }
-      end
-
-      File.chmod(0766, EXECUTABLE_FILE)
-    end
-
-    def write_file
-      File.open(yield, 'w') { |f| f.write yield }
-    end
-
     def copy_source
-      %w(BIN CONF LIB VENDOR).each do |directory|
+      # each source directory constant is paired with a target app directory
+      #   ex. SOURCE_BIN_DIR is paired with APP_BIN_DIR
+      source = %w(BIN CONF LIB VENDOR)
+
+      source.each do |directory|
         values = %w(SOURCE APP).each
         copy_dir { Build.const_get "#{values.next}_#{directory}_DIR" }
       end
@@ -121,11 +115,32 @@ end
       FileUtils.copy_entry(yield, yield)
     end
 
+    def create_files
+      # each file name constant is paired with a file contents constant.
+      #   ex. EXECUTABLE_FILE is paired with EXECUTABLE_CONTENTS
+      files = %w(BUILD_STAMP INFO_PLIST EXECUTABLE LICENSE VERSION_PLIST VERSION)
+
+      files.each do |file|
+        values = %w(FILE CONTENTS).each
+        write_file { Build.const_get "#{file}_#{values.next}" }
+      end
+
+      File.chmod(0766, EXECUTABLE_FILE) # make app launcher executable
+    end
+
+    def write_file
+      File.open(yield, 'w') { |f| f.write yield }
+    end
+
     def initialize
       create_directories
       copy_source
-
       create_files
+
+      puts "#{APP_NAME} has been created and saved to #{OSX_APP_DIR}."
+    rescue => error
+      puts error.message
+      puts error.backtrace.join("\n")
     end
   end
 end
