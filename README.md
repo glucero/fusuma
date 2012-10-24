@@ -30,7 +30,7 @@ example configuration 'configuration.json':
         "large_workspace"                        # secondary monitor
       ],
       "keymap": {                                # keymap actions reference methods in keymap.rb
-        "master": "RETURN+COMMAND+SHIFT",
+        "main_window": "RETURN+COMMAND+SHIFT",
         "remove_all_windows": "Q+COMMAND+SHIFT",
         "rotate_layout_counterclockwise": "K+COMMAND+SHIFT",   # *** WARNING ***
         "rotate_layout_clockwise": "J+COMMAND+SHIFT",          # these keymaps are global, map carefully.
