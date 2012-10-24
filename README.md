@@ -31,6 +31,8 @@ example configuration 'configuration.json':
       ],
       "keymap": {                                # keymap actions reference methods in keymap.rb
         "main_window": "RETURN+COMMAND+SHIFT",
+        "activate_window_1": "1+COMMAND+SHIFT",
+        "activate_window_2": "2+COMMAND+SHIFT,
         "remove_all_windows": "Q+COMMAND+SHIFT",
         "rotate_layout_counterclockwise": "K+COMMAND+SHIFT",   # *** WARNING ***
         "rotate_layout_clockwise": "J+COMMAND+SHIFT",          # these keymaps are global, map carefully.
@@ -73,7 +75,7 @@ example layout 'my_layout.json'
 ### todo
 
   * clean up and documentation (this is an ongoing todo item)
-  * a few more default layouts and more keymaps
+  * default layouts and lots more keymaps
   * multi-layout/monitor support
   * observer to notify fusuma when a window opens/closes/changes state
   * fix sizing of fixed-ratio windows like terminals and editors with fixed width fonts like MacVim/Emacs (if this is even possible)
