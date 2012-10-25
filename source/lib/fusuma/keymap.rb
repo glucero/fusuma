@@ -6,6 +6,34 @@ module Fusuma
 
     attr_reader :keys, :layout
 
+    def zoom_focused_window
+      # center the focused window and set its dimensions to be slightly smaller
+      # than the desktop's
+      log.debug "Zooming the focused window."
+      window = Application.active.focused_window
+      desktop = window.location
+
+      window.position = desktop.size.to_a.map { |v| v * 0.1 }
+      window.dimensions = desktop.size.to_a.map { |v| v * 0.85 }
+    end
+
+    def swap_focused_window_with_main
+      # swap the focused window's current position with the main window
+      focused_window = Application.active.focused_window
+      if layout.include? focused_window
+        main = layout.main
+        index = layout.index(focused_window)
+
+        log.debug "Swapping the main window's position with window #{index}."
+
+        layout.shift
+        layout.insert(index, main)
+        layout.prepend(focused_window)
+
+        apply_layout
+      end
+    end
+
     def activate_next_window
       # find the active window in the layout and activate the previous window
       # without changing the layout or positioning of any windows
@@ -28,7 +56,7 @@ module Fusuma
     def rotate_layout_clockwise
       # make the last window the main(first) window and reorganize the windows
       log.debug "Rotating the layout clockwise."
-      layout.prepend layout.last
+      layout.rotate!
       apply_layout
 
       activate_previous_window
@@ -37,13 +65,13 @@ module Fusuma
     def rotate_layout_counterclockwise
       # make the main(first) window the last window and reorganize the windows
       log.debug "Rotating the layout counter clockwise."
-      layout.append layout.first
+      layout.rotate!(-1)
       apply_layout
 
       activate_next_window
     end
 
-    def main_window
+    def set_main_window
       # make the active window the main(first) window (if it's not in the layout,
       # add it) and reorganize the windows
       log.debug "Setting the active window as layout's main window."
@@ -51,17 +79,7 @@ module Fusuma
       apply_layout
     end
 
-    def master
-      if layout.main.eql? Window.active
-        log.debug "The active window is already the main window."
-        remove_active_window
-      else
-        log.debug "This active window is not in the layout or is not the main window."
-        main_window
-      end
-    end
-
-    def remove_active_window
+    def remove_focused_window
       log.debug "Removing the active window from the layout."
       layout.remove Window.active
       apply_layout

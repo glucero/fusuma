@@ -6,6 +6,8 @@ module Fusuma
 
     attr_accessor :frames, :scale
 
+    alias_method :main, :first
+
     def self.all
       layouts = Dir.glob(File.join(LAYOUTS, '**.json'))
 
@@ -50,8 +52,6 @@ module Fusuma
     def remove(window)
       reject! { |w| w.eql? window }
     end
-
-    def main() first end
 
     def append(window)
       # Remove the window if it already exists, then add it to the end of the

@@ -3,12 +3,14 @@
     "small_workspace"
   ],
   "keymap": {
-    "main_window": "RETURN+COMMAND+SHIFT",
-    "remove_all_windows": "Q+COMMAND+SHIFT",
+    "set_main_window": "RETURN+COMMAND+SHIFT",
+    "zoom_focused_window": "Z+COMMAND+SHIFT",
+    "swap_focused_window_with_main": "SPACE+COMMAND+SHIFT",
     "rotate_layout_counterclockwise": "K+COMMAND+SHIFT",
     "rotate_layout_clockwise": "J+COMMAND+SHIFT",
     "activate_previous_window": "H+COMMAND+SHIFT",
-    "activate_next_window": "L+COMMAND+SHIFT"
+    "activate_next_window": "L+COMMAND+SHIFT",
+    "remove_all_windows": "Q+COMMAND+SHIFT"
   }
 }
 
