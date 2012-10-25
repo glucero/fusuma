@@ -30,6 +30,8 @@ module Fusuma
       log.debug "Rotating the layout clockwise."
       layout.prepend layout.last
       apply_layout
+
+      activate_previous_window
     end
 
     def rotate_layout_counterclockwise
@@ -37,6 +39,8 @@ module Fusuma
       log.debug "Rotating the layout counter clockwise."
       layout.append layout.first
       apply_layout
+
+      activate_next_window
     end
 
     def main_window
@@ -71,6 +75,57 @@ module Fusuma
     def remove_all_windows
       log.debug "Removing all windows from the layout."
       layout.clear
+    end
+
+    # a set of mappings to activate windows by layout index
+    def activate_window_1
+      log.debug "Activating window 1."
+      layout[0].activate
+    end
+
+    def activate_window_2
+      log.debug "Activating window 2."
+      layout[1].activate
+    end
+
+    def activate_window_3
+      log.debug "Activating window 3."
+      layout[2].activate
+    end
+
+    def activate_window_4
+      log.debug "Activating window 4."
+      layout[3].activate
+    end
+
+    def activate_window_5
+      log.debug "Activating window 5."
+      layout[4].activate
+    end
+
+    def activate_window_6
+      log.debug "Activating window 6."
+      layout[5].activate
+    end
+
+    def activate_window_7
+      log.debug "Activating window 7."
+      layout[6].activate
+    end
+
+    def activate_window_8
+      log.debug "Activating window 8."
+      layout[7].activate
+    end
+
+    def activate_window_9
+      log.debug "Activating window 9."
+      layout[8].activate
+    end
+
+    def activate_window_10
+      log.debug "Activating window 10."
+      layout[9].activate
     end
 
     def add(action, sequence)
