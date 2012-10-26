@@ -87,7 +87,7 @@ example layout 'my_layout.json'
 ### wanna help/play?
 
   * download and install the latest [MacRuby](http://macruby.org/)
-  * it's recommended (but not required) that you install [afloat](http://infinite-labs.net/afloat) and turn off window shadows
+  * it's recommended (but not required) that you install [afloat](http://infinite-labs.net/afloat) and [shadowkiller](http://unsanity.com/haxies/shadowkiller) and turn off window shadows
   * fork fusuma
   * run './build_app' to build the latest version
   * run 'open fusuma.app' (or double click it)
