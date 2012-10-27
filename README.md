@@ -89,7 +89,8 @@ example layout 'my_layout.json'
   * download and install the latest [MacRuby](http://macruby.org/)
   * it's recommended (but not required) that you install [afloat](http://infinite-labs.net/afloat) and [shadowkiller](http://unsanity.com/haxies/shadowkiller) and turn off window shadows
   * fork fusuma
-  * run './build_app' to build the latest version
+  * edit the default_configuration.json or create your own configuration
+  * run './build_app ./path/to/my/configuration' (or just './build_app' if you'd like to use the default configuration) to build the latest version
   * run 'open fusuma.app' (or double click it)
   * hax (the most important step!)
 

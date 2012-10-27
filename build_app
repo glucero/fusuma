@@ -15,6 +15,7 @@ module Fusuma
     ############################################################################
     # the project and build heirarchy
     PROJECT_ROOT                        = File.dirname(__FILE__)
+      DEFAULT_CONFIGURATION             = File.join(PROJECT_ROOT, 'default_configuration.json')
       PROJECT_LICENSE                   = File.join(PROJECT_ROOT, 'LICENSE.txt')
       BUILD_ROOT                        = File.join(PROJECT_ROOT, 'build')
         BUILD_DIR                       = File.join(BUILD_ROOT, BUILD_TIME)
@@ -30,11 +31,12 @@ module Fusuma
               RESOURCES_DIR             = File.join(CONTENTS_DIR, 'Resources')
                 LICENSE_FILE            = File.join(PROJECT_ROOT, 'LICENSE.txt')
                 APP_BIN_DIR             = File.join(RESOURCES_DIR, 'bin')
-                APP_CONF_DIR            = File.join(RESOURCES_DIR, 'conf')
+                CONF_DIR                = File.join(RESOURCES_DIR, 'conf')
+                  CONFIGURATION         = File.join(CONF_DIR, 'configuration.json')
                 # ICON_FILE               = File.join(RESOURCES_DIR, "#{APP_NAME}.icns") # TODO: make icon
                 APP_LIB_DIR             = File.join(RESOURCES_DIR, 'lib')
                   VERSION_FILE          = File.join(APP_LIB_DIR, 'version.rb')
-                APP_LOG_DIR             = File.join(RESOURCES_DIR, 'log')
+                LOG_DIR                 = File.join(RESOURCES_DIR, 'log')
                 APP_VENDOR_DIR          = File.join(RESOURCES_DIR, 'vendor')
               VERSION_PLIST_FILE        = File.join(CONTENTS_DIR, 'version.plist')
             # ICON_CHECK_FILE             = File.join(OSX_APP_DIR, 'Icon?')
@@ -93,7 +95,7 @@ end
 
     def create_directories
       # FileUtils.makedirs will create all parent directories needed
-      directories = [FRAMEWORKS_DIR, MACOS_DIR, PROFILE_DIR, APP_LOG_DIR]
+      directories = [FRAMEWORKS_DIR, MACOS_DIR, PROFILE_DIR, CONF_DIR, LOG_DIR]
 
       directories.each do |directory|
         FileUtils.makedirs directory
@@ -103,7 +105,7 @@ end
     def copy_source
       # each source directory constant is paired with a target app directory
       #   ex. SOURCE_BIN_DIR is paired with APP_BIN_DIR
-      source = %w(BIN CONF LIB VENDOR)
+      source = %w(BIN LIB VENDOR)
 
       source.each do |directory|
         values = %w(SOURCE APP).each
@@ -132,10 +134,18 @@ end
       File.open(yield, 'w') { |f| f.write yield }
     end
 
-    def initialize
+    def configure_with(configuration)
+      File.open(CONFIGURATION, 'w') do |file|
+        file.write File.open(configuration).read
+      end
+    end
+
+    def initialize(configuration)
       create_directories
       copy_source
       create_files
+
+      configure_with(configuration)
 
       puts "#{APP_NAME} has been created and saved to #{OSX_APP_DIR}."
     rescue => error
@@ -145,5 +155,8 @@ end
   end
 end
 
-Fusuma::Build.new
+configuration = ARGV.shift
+configuration ||= Fusuma::Build::DEFAULT_CONFIGURATION # use the default configuration if none given
+
+Fusuma::Build.new(configuration)
 
