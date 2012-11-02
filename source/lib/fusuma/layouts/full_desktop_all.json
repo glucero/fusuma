@@ -3,7 +3,7 @@
 //   all windows cover the full desktop (max 5)
 
 {
-  "name": "quadrants",
+  "name": "full_desktop_all",
   "scale": {
     "origin": [ 0, 0 ],
     "size": [ 120, 120 ]

@@ -21,13 +21,10 @@ module Fusuma
       # swap the focused window's current position with the main window
       focused_window = Application.active.focused_window
       if layout.include? focused_window
-        main = layout.main
         index = layout.index(focused_window)
-
         log.debug "Swapping the main window's position with window #{index}."
 
-        layout.shift
-        layout.insert(index, main)
+        layout.insert(index, layout.shift)
         layout.prepend(focused_window)
 
         apply_layout
