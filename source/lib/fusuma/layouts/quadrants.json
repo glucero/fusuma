@@ -1,11 +1,9 @@
-// name: small_workspace
+// name: quadrants
 // description:
-//   a small layout with a max of 4 controlled windows
-//   the 'main' window takes up the right half of the screen at all times
-//   with the other 3 stacked verticaly going up
+//   like small_workspace but in 4 even rectangles with max windows
 
 {
-  "name": "small_workspace",
+  "name": "quadrants",
   "scale": {
     "origin": [ 0, 0 ],
     "size": [ 120, 120 ]
@@ -43,20 +41,20 @@
     ],
     [
       {
+        "position": [ 60, 60 ],
+        "dimensions": [ 60, 60 ]
+      },
+      {
         "position": [ 60, 0 ],
-        "dimensions": [ 60, 120 ]
+        "dimensions": [ 60, 60 ]
       },
       {
-        "position": [ 0, 80 ],
-        "dimensions": [ 60, 40 ]
-      },
-      {
-        "position": [ 0, 40 ],
-        "dimensions": [ 60, 40 ]
+        "position": [ 0, 60 ],
+        "dimensions": [ 60, 60 ]
       },
       {
         "position": [ 0, 0 ],
-        "dimensions": [ 60, 40 ]
+        "dimensions": [ 60, 60 ]
       }
     ]
   ]

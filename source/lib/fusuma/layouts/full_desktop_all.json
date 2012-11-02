@@ -1,0 +1,61 @@
+// name: full_desktop_all
+// description:
+//   all windows cover the full desktop (max 5)
+
+{
+  "name": "quadrants",
+  "scale": {
+    "origin": [ 0, 0 ],
+    "size": [ 120, 120 ]
+  },
+  "frames": [
+    [
+      {
+        "position": [ 0, 0 ],
+        "dimensions": [ 120, 120 ]
+      }
+    ],
+    [
+      {
+        "position": [ 0, 0 ],
+        "dimensions": [ 120, 120 ]
+      },
+      {
+        "position": [ 0, 0 ],
+        "dimensions": [ 120, 120 ]
+      }
+    ],
+    [
+      {
+        "position": [ 0, 0 ],
+        "dimensions": [ 120, 120 ]
+      },
+      {
+        "position": [ 0, 0 ],
+        "dimensions": [ 120, 120 ]
+      },
+      {
+        "position": [ 0, 0 ],
+        "dimensions": [ 120, 120 ]
+      }
+    ],
+    [
+      {
+        "position": [ 0, 0 ],
+        "dimensions": [ 120, 120 ]
+      },
+      {
+        "position": [ 0, 0 ],
+        "dimensions": [ 120, 120 ]
+      },
+      {
+        "position": [ 0, 0 ],
+        "dimensions": [ 120, 120 ]
+      },
+      {
+        "position": [ 0, 0 ],
+        "dimensions": [ 120, 120 ]
+      }
+    ]
+  ]
+}
