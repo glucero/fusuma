@@ -2,6 +2,7 @@ module Fusuma
 
   class Configuration
 
+    include Logger
     include Properties
 
     def layouts
@@ -12,7 +13,11 @@ module Fusuma
       read_configuration do |layouts, keymap|
         @keymap = keymap
         layouts = layouts.map { |l| Layout.load(l) }
+
+        log.debug "#{layouts.count} layouts configured."
+
         layouts.zip(Workspace.desktops) do |layout, desktop|
+
           layout.scale_to desktop unless desktop.nil?
         end
 
@@ -22,6 +27,9 @@ module Fusuma
 
     def keymap(layout)
       KeyMap.new(layout) do |keymap|
+
+        log.debug "#{@keymap.count} keymaps configured."
+
         @keymap.each do |action, sequence|
           keymap.add(action, sequence)
         end
@@ -33,6 +41,7 @@ module Fusuma
     def read_configuration
       File.open(CONFIG, 'r') do |file|
         file = JSON.parse(file.read)
+
         yield file.values
       end
     end

@@ -55,7 +55,12 @@ module Fusuma
       configuration = Configuration.new
 
       @layouts = configuration.layouts
+
+      log.debug 'Layouts created.'
+
       @keymap  = configuration.keymap(@layouts.first) # use only 1 layout right now
+
+      log.debug 'Keymaps created.'
     rescue => error
       log.error error.message
       log.error error.backtrace.join("\n")

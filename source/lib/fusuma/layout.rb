@@ -2,6 +2,7 @@ module Fusuma
 
   class Layout < Array
 
+    include Logger
     include Properties
 
     attr_accessor :frames, :scale
@@ -19,7 +20,11 @@ module Fusuma
     end
 
     def self.load(name)
-      config = Layout.all.find { |l| l.name.eql? name }
+      layouts = Layout.all
+
+      log.debug "#{layouts.count} layouts found."
+
+      config = layout.find { |l| l.name.eql? name }
 
       Layout.new(config.scale, config.frames)
     end

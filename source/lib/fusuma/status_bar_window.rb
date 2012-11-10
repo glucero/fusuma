@@ -2,6 +2,7 @@ module Fusuma
 
   class StatusBarWindow < NSWindow
 
+    include Logger
     include Properties
 
     X = Y = 0.0
@@ -9,6 +10,8 @@ module Fusuma
 
     def init(frame, controller)
       @controller = controller
+
+      log.info 'Initializing StatusBarWindow'
 
       window = create(Area(frame.origin.x, (frame.origin.y - H), W, H))
       window.contentView.addSubview(create_button)
