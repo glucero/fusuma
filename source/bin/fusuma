@@ -1,5 +1,3 @@
-#!/usr/bin/env ruby
-
 $:.unshift File.join(File.dirname($0), '/../lib')
 
 framework 'ScriptingBridge'
