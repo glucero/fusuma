@@ -23,6 +23,9 @@ module Fusuma
 
         layouts
       end
+    rescue => error
+      log.error error.message
+      log.error error.backtrace.join("\n")
     end
 
     def keymap(layout)
@@ -36,6 +39,9 @@ module Fusuma
 
         keymap.keys
       end
+    rescue => error
+      log.error error.message
+      log.error error.backtrace.join("\n")
     end
 
     def read_configuration
@@ -44,6 +50,9 @@ module Fusuma
 
         yield file.values
       end
+    rescue => error
+      log.error error.message
+      log.error error.backtrace.join("\n")
     end
 
   end
